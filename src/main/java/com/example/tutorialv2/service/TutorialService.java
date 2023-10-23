@@ -50,7 +50,14 @@ public class TutorialService {
 
     public List<TutorialVO> searchTutorials(String buscar) throws Exception{
         //List<TutorialVO> tutorials = tutorialRepository.searchTutorials(buscar);
+
         var enity = tutorialRepository.searchTutorials(buscar);
+
+        if(enity.isEmpty()) {
+            throw new NaoEncontradoException("Tutorial não Encontrado");
+        }
+
+
         return DozerMapper.parseListObjects(enity, TutorialVO.class);
     }
 

@@ -2,6 +2,7 @@ package com.example.tutorialv2.controller;
 
 
 import com.example.tutorialv2.data.vo.v1.ProdutoVO;
+import com.example.tutorialv2.data.vo.v1.TutorialVO;
 import com.example.tutorialv2.data.vo.v1.UsuarioVO;
 import com.example.tutorialv2.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -61,7 +62,7 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.findAll(pageable));
     }
 
-    @GetMapping(value = "/buscarProduto/{nome}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/buscarProduto/{buscar}", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Buscar produtos Pelo nome", tags = {"Produto"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
@@ -75,19 +76,10 @@ public class ProdutoController {
             }
 
     )
-    public ResponseEntity<PagedModel<EntityModel<ProdutoVO>>> buscarByNome
-            (@PathVariable(value = "nome") String nome,
-             @RequestParam(value = "page", defaultValue = "0") Integer page,
-             @RequestParam(value = "limit", defaultValue = "10") Integer limit,
-             @RequestParam(value = "direction", defaultValue = "asc") String direction)
-            throws Exception {
-
-        var sortDirection = "desc".equalsIgnoreCase(direction)
-                ? Sort.Direction.DESC : Sort.Direction.ASC;
-
-
-        Pageable pageable = PageRequest.of(page,limit, Sort.by(sortDirection, "idProduto"));
-        return ResponseEntity.ok(produtoService.buscarByNome(nome,pageable));
+    public ResponseEntity<List<ProdutoVO>> buscarByNome
+            (@RequestParam(value = "buscar") String buscar) throws Exception {
+        //Pageable pageable = PageRequest.of(page,limit, Sort.by(sortDirection, "idProduto"));
+        return ResponseEntity.ok(produtoService.buscarByNome(buscar));
     }
 
     @GetMapping(value = "/produto/{idProduto}", produces = MediaType.APPLICATION_JSON_VALUE)

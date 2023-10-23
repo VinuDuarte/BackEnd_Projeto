@@ -28,3 +28,9 @@ springdoc:
   paths-to-match: /api/**
   swagger-ui:
     use-root-path: true
+
+
+  ## LOGAR NA APLICAÇÃO COM TOKEN
+  # LOGIN: leandro
+  # SENHA: admin123
+
