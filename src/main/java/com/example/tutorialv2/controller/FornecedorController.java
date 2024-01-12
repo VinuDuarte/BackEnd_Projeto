@@ -42,13 +42,13 @@ public class FornecedorController {
         return ResponseEntity.ok(fornecedorService.createFornecedor(fornecedor));
     }
 
-    @GetMapping(value = "/fornecedor")
+    @GetMapping(value = "/fornecedor", produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Lista de Fornecedores",
             tags = {"Fornecedor"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                               @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = FornecedorVO.class)))
+                               @Content(array = @ArraySchema(schema = @Schema(implementation = FornecedorVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -66,7 +66,7 @@ public class FornecedorController {
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = FornecedorVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = FornecedorVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -78,7 +78,7 @@ public class FornecedorController {
                     return ResponseEntity.ok(fornecedorService.findById(idFornecedor));
     }
 
-    @PutMapping("/fornecedor/{idFornecedor}")
+    @PutMapping(value = "/fornecedor/{idFornecedor}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Atualizar Fornecedor",description = "Atualizar Fornecedor",
             tags = {"Fornecedor"},
             responses = {
@@ -95,7 +95,7 @@ public class FornecedorController {
                     return ResponseEntity.ok(fornecedorService.updateFornecedor(fornecedor));
     }
 
-    @DeleteMapping("/fornecedor/{idFornecedor}")
+    @DeleteMapping(value = "/fornecedor/{idFornecedor}")
     @Operation(summary = "Excluir Fornecedor",description = "Atualizar Fornecedor",
             tags = {"Fornecedor"},
             responses = {

@@ -28,13 +28,13 @@ public class PerfilController {
     @Autowired
     private PerfilService perfilService;
 
-    @GetMapping(value = "/perfil" , produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/perfil",  produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Lista de Perfis",
             tags = {"Perfil"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = PerfilVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = PerfilVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -46,14 +46,13 @@ public class PerfilController {
             return ResponseEntity.ok(perfilService.findAll(nome));
     }
 
-    @GetMapping(value = "/perfil/{idPerfil}",
-            produces = MediaType.APPLICATION_JSON_VALUE) //GET BY ID
+    @GetMapping(value = "/perfil/{idPerfil}", produces = MediaType.APPLICATION_JSON_VALUE) //GET BY ID
     @Operation(summary = "Pegar perfil pelo ID", description = "get By ID",
             tags = {"Perfil"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = PerfilVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = PerfilVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -83,7 +82,7 @@ public class PerfilController {
 
     }
 
-    @DeleteMapping(value = "/perfil/{idPerfil}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/perfil/{idPerfil}")
     @Operation(summary = "Deletar Perfil",description = "Deletar Perfil da base",
             tags = {"Perfil"},
             responses = {
