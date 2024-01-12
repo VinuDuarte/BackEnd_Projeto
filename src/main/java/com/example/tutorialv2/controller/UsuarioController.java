@@ -26,13 +26,14 @@ public class UsuarioController {
     UsuarioService usuarioService;
 
 
-    @GetMapping(value = "/usuarios" ,produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/usuarios" ,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Lista de todos os Usuarios",
         tags = {"Usuarios"},
         responses = {
             @ApiResponse(description = "Sucesso",  responseCode = "200",
                     content = {
-                        @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = UsuarioVO.class)))
+                        @Content(array = @ArraySchema(schema = @Schema(implementation = UsuarioVO.class)))
                     }),
             @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
             @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -45,13 +46,14 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.findAll(nome));
     }
 
-    @GetMapping(value = "/usuarios/{idUsuario}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/usuarios/{idUsuario}",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Usuarios por ID", description = "get By ID",
             tags = {"Usuarios"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = UsuarioVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = UsuarioVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -81,7 +83,7 @@ public class UsuarioController {
            return ResponseEntity.ok(usuarioService.createUsuario(usuario));
     }
 
-    @DeleteMapping(value = "/usuarios/{idUsuario}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(value = "/usuarios/{idUsuario}")
     @Operation(summary = "Deletar Usuario",description = "Deletar usuario da base",
         tags = {"Usuarios"},
         responses = {

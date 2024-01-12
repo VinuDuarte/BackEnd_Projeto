@@ -34,12 +34,13 @@ public class ProdutoController {
     @Autowired
     ProdutoService produtoService;
 
-    @GetMapping(value = "/produto", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/produto",
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Lista Todos os produtos", tags = {"Produto"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -62,12 +63,12 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.findAll(pageable));
     }
 
-    @GetMapping(value = "/buscarProduto/{buscar}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/buscarProduto",  produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Buscar produtos Pelo nome", tags = {"Produto"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -82,13 +83,13 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoService.buscarByNome(buscar));
     }
 
-    @GetMapping(value = "/produto/{idProduto}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/produto/{idProduto}",  produces = MediaType.APPLICATION_JSON_VALUE)
     @Operation(summary = "Produtos por ID", description = "get By ID",
             tags = {"Produto"},
             responses = {
                     @ApiResponse(description = "Sucesso",  responseCode = "200",
                             content = {
-                                    @Content(mediaType = "aplication/json", array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
+                                    @Content(array = @ArraySchema(schema = @Schema(implementation = ProdutoVO.class)))
                             }),
                     @ApiResponse(description = "Bad Request", responseCode = "400", content = @Content),
                     @ApiResponse(description = "Unauthorized", responseCode = "401", content = @Content),
@@ -131,7 +132,7 @@ public class ProdutoController {
             return ResponseEntity.ok(produtoService.updateProduto(produto));
     }
 
-    @DeleteMapping("/produto/{idProduto}")
+    @DeleteMapping(value =  "/produto/{idProduto}")
     @Operation(summary = "Excluir Produto",description = "Delete Produto",
             tags = {"Produto"},
             responses = {

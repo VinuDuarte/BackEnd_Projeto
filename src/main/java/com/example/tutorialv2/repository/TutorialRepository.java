@@ -18,10 +18,10 @@ public interface TutorialRepository extends JpaRepository<Tutorial, Long> {
             "Or t.description LIKE  LOWER(CONCAT('%', :buscar, '%'))" ,nativeQuery = true)
     List<Tutorial> searchTutorials(String buscar);
 
-//    @Query(value = "SELECT * FROM tutorials t WHERE " +
-//            "t.title LIKE CONCAT('%',:buscar, '%')" +
-//            "Or t.description LIKE CONCAT('%', :buscar, '%')" , nativeQuery = true)
-//    List<Tutorial> searchTutorialsSQL(String buscar);
+    @Query(value = "SELECT * FROM tutorials t WHERE " +
+            "t.title LIKE CONCAT('%',:buscar, '%')" +
+            "Or t.description LIKE CONCAT('%', :buscar, '%')" , nativeQuery = true)
+    List<Tutorial> searchTutorialsSQL(String buscar);
 
 
 

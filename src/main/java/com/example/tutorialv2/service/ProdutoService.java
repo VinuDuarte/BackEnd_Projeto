@@ -56,18 +56,12 @@ public class ProdutoService {
 
     public List<ProdutoVO> buscarByNome(String buscar) throws Exception{
 
-        //var productPage = produtoRepository.findByNomeIgnoreCase(nome,pageable);
+        var enity = produtoRepository.searchByNomeIgnoreCase(buscar);
 
-        var enity = produtoRepository.searchByNome(buscar);
-//        var productVo = testPPage.listIterator
-//                (p -> DozerMapper.parseListObjects(p, ProdutoVO.class));
-//
-//
-//        Link  link = linkTo(methodOn(ProdutoController.class).
-//                getAllProdutos(pageable.getPageNumber(),
-//                        pageable.getPageSize(),
-//                        "asc" )).withSelfRel();
 
+            if (enity.isEmpty()) {
+                throw new NaoEncontradoException("Nenhum Produto Encontrado");
+            }
         return DozerMapper.parseListObjects(enity, ProdutoVO.class);
 
     }
@@ -94,6 +88,8 @@ public class ProdutoService {
     }
 
     public ProdutoVO updateProduto(ProdutoVO produto) throws Exception {
+
+
                var produtoData = produtoRepository.findById(produto.getIdProduto())
                        .orElseThrow(() -> new NaoEncontradoException("Id não Encontrado"));
 
