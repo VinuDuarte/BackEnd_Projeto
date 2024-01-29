@@ -40,8 +40,10 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <version>1.18.30</version>
             <optional>true</optional>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -116,12 +118,6 @@
             <version>2.3.1</version>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>TutorialV2</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
 
 

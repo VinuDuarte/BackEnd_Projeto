@@ -87,12 +87,12 @@ public class UsuarioController {
 
 
 
-    @PutMapping(value = "/usuarios/editar/{idUsuario}")
-    public ResponseEntity<UsuarioVO> inativarOuAtivarUsuario(@PathVariable ("idUsuario") Long idUsuario,
-                                                             @RequestBody UsuarioVO usuario) throws Exception {
+    @PutMapping(value = "/usuarios/{idUsuario}", params = "status")
+    public ResponseEntity inativarOuAtivarUsuario(@PathVariable ("idUsuario") Long idUsuario,
+                                                             @RequestParam("status") int status ,
+                                                             UsuarioVO usuario) throws Exception {
 
          return ResponseEntity.ok(usuarioService.inativarOuAtivarUsuario(usuario));
-
     }
 
 
