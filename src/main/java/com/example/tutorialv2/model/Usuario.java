@@ -4,6 +4,7 @@ package com.example.tutorialv2.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "usuario")
 @Data
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 public class Usuario {
 
     @Id
@@ -43,26 +44,6 @@ public class Usuario {
 
 
 
-    public Usuario(long idUsuario, String nome, String login, String senha, int status, long idPerfil) {
-        this.idUsuario = idUsuario;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.status = status;
-        this.idPerfil = idPerfil;
-    }
 
 
-
-    @Override
-    public String toString() {
-        return "Usuario{" +
-                "idUsuario=" + idUsuario +
-                ", nome='" + nome + '\'' +
-                ", login='" + login + '\'' +
-                ", senha='" + senha + '\'' +
-                ", status=" + status +
-                ", idPerfil=" + idPerfil +
-                '}';
-    }
 }

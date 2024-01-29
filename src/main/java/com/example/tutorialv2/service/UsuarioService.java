@@ -2,6 +2,7 @@ package com.example.tutorialv2.service;
 
 import com.example.tutorialv2.controller.PerfilController;
 import com.example.tutorialv2.data.vo.v1.UsuarioVO;
+import com.example.tutorialv2.exceptions.MethodArgumentNotValidException;
 import com.example.tutorialv2.exceptions.NaoEncontradoException;
 import com.example.tutorialv2.mapper.DozerMapper;
 import com.example.tutorialv2.model.Usuario;
@@ -53,6 +54,22 @@ public class UsuarioService {
         var vo = DozerMapper.parseObject(usuarioRepository.save(enity), UsuarioVO.class);
         return vo;
     }
+
+    public UsuarioVO inativarOuAtivarUsuario(UsuarioVO usuario) throws Exception {
+
+        var usuarioData = usuarioRepository.findById(usuario.getIdUsuario())
+                    .orElseThrow(() -> new NaoEncontradoException("Usuário não encontrado"));
+
+            usuarioData.setStatus(usuario.getStatus());
+
+            if ((usuarioData.getStatus() != 0) && (usuarioData.getStatus() != 1)){
+                throw  new NaoEncontradoException("Status invalio");
+            }
+
+            var dto = DozerMapper.parseObject(usuarioRepository.save(usuarioData), UsuarioVO.class);
+            return dto;
+    }
+
 
     public void deleteUsuario(Long id) throws Exception {
         var enity = usuarioRepository.findById(id)

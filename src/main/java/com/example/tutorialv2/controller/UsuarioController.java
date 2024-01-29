@@ -1,6 +1,7 @@
 package com.example.tutorialv2.controller;
 
 
+import com.example.tutorialv2.data.vo.v1.ProdutoVO;
 import com.example.tutorialv2.data.vo.v1.UsuarioVO;
 import com.example.tutorialv2.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -11,6 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -82,6 +84,17 @@ public class UsuarioController {
     public ResponseEntity<UsuarioVO> postUsuario(@Valid @RequestBody UsuarioVO usuario) throws Exception{
            return ResponseEntity.ok(usuarioService.createUsuario(usuario));
     }
+
+
+
+    @PutMapping(value = "/usuarios/editar/{idUsuario}")
+    public ResponseEntity<UsuarioVO> inativarOuAtivarUsuario(@PathVariable ("idUsuario") Long idUsuario,
+                                                             @RequestBody UsuarioVO usuario) throws Exception {
+
+         return ResponseEntity.ok(usuarioService.inativarOuAtivarUsuario(usuario));
+
+    }
+
 
     @DeleteMapping(value = "/usuarios/{idUsuario}")
     @Operation(summary = "Deletar Usuario",description = "Deletar usuario da base",
