@@ -91,7 +91,7 @@ public class UsuarioController {
     public ResponseEntity inativarOuAtivarUsuario(@PathVariable ("idUsuario") Long idUsuario,
                                                              @RequestParam("status") int status ,
                                                              UsuarioVO usuario) throws Exception {
-
+        //Response
          return ResponseEntity.ok(usuarioService.inativarOuAtivarUsuario(usuario));
     }
 
