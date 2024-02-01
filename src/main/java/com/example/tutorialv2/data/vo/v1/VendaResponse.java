@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Data
-public class VendaVo {
+public class VendaResponse {
 
     private long idVenda;
 
