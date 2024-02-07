@@ -18,6 +18,8 @@ public interface ProdutoRepository  extends JpaRepository<Produto , Long> {
     @Query(value = "SELECT id_fornecedor FROM fornecedor f  WHERE f.id_fornecedor = ?", nativeQuery = true)
     Long findByIdFornecedor(long IdFornecedor);
 
+    Produto findByIdProduto(long idProduto);
+
     @Query(value = "SELECT * FROM produto p WHERE p.nome  ILIKE LOWER(CONCAT('%', :buscar, '%'))",nativeQuery = true)
     List<Produto> searchByNomeIgnoreCase(String buscar);
 

@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Entity
 @SequenceGenerator(name = "venda_seq", sequenceName = "venda_seq",
-        initialValue = 10, allocationSize = 1)
+        initialValue = 1, allocationSize = 1)
 
 @Data
 @AllArgsConstructor
@@ -19,7 +19,7 @@ import java.util.Date;
 public class Venda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vendar_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "venda_seq")
     private long idVenda;
 
     private Date dataVenda;
