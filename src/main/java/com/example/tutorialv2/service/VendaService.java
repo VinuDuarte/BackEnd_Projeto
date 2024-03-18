@@ -35,7 +35,7 @@ public class VendaService {
         var produto = DozerMapper.parseObject(produtoRep, Produto.class);
 
         if (produto.getQtd() <= 0){
-            throw new NaoEncontradoException("Produto em Falta!");
+            throw new NaoEncontradoException("Produto em falta");
         }
         var qtd =  enity.getQuantidadeVendida();
         produto.setQtd(produto.getQtd() - qtd);

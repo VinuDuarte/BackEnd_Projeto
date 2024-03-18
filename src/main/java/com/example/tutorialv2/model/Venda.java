@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name = "venda_seq", sequenceName = "venda_seq",
-        initialValue = 1, allocationSize = 1)
+@SequenceGenerator(name = "VENDA_SEQUENCE", sequenceName = "SQ_VENDA",
+         allocationSize = 1)
 
 @Data
 @AllArgsConstructor
@@ -19,7 +19,7 @@ import java.util.Date;
 public class Venda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "venda_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDA_SEQUENCE")
     private long idVenda;
 
     private Date dataVenda;
