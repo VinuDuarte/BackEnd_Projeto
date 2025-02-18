@@ -9,17 +9,16 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
-@SequenceGenerator(name = "VENDA_SEQUENCE", sequenceName = "SQ_VENDA",
-         allocationSize = 1)
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "venda")
+@SequenceGenerator(name = "venda_seq", sequenceName = "venda_seq",
+        initialValue = 1, allocationSize = 1)
 public class Venda {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "VENDA_SEQUENCE")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "venda_seq")
     private long idVenda;
 
     private Date dataVenda;

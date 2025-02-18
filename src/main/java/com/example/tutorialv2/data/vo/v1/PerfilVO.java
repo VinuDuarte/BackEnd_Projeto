@@ -1,13 +1,16 @@
 package com.example.tutorialv2.data.vo.v1;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
 
 @Builder
 @Data
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class PerfilVO implements Serializable {
 
     @Serial

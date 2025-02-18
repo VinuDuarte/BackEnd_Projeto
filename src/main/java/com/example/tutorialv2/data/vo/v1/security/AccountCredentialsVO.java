@@ -1,14 +1,18 @@
 package com.example.tutorialv2.data.vo.v1.security;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.io.Serializable;
-import java.util.Objects;
 
 
 public class AccountCredentialsVO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Schema(example = "leandro")
         private String username;
+
+    @Schema(example = "admin123")
         private String password;
 
     public String getUsername() {

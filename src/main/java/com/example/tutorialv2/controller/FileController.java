@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
-
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -31,7 +30,7 @@ public class FileController {
     private FileStorageService service;
 
 
-    @PostMapping(value = "/uploadFile")
+    @PostMapping(value = "/uploadFile" , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public UploadFileResponseVo uploadFile(@RequestParam("file") MultipartFile file) {
         logger.info("Store dos arquivos em Disco!!!!");
 

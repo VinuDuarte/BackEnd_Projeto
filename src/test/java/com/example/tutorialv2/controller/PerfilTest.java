@@ -89,14 +89,7 @@ class PerfilTest {
     }
 
 
-    private JwtRequestPostProcessor getTokenWithRoles() {
-        return this.getToken().authorities(List.of(new SimpleGrantedAuthority(ENDPOINT_ROLE)));
-    }
-
-    private JwtRequestPostProcessor getToken() {
-        return jwt();
-    }
-
+   
 
 
 }
