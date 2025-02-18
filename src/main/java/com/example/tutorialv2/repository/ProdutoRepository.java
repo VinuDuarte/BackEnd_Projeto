@@ -18,17 +18,8 @@ public interface ProdutoRepository  extends JpaRepository<Produto , Long> {
     @Query(value = "SELECT id_fornecedor FROM fornecedor f  WHERE f.id_fornecedor = ?", nativeQuery = true)
     Long findByIdFornecedor(long IdFornecedor);
 
-    //BUSCAR POR NOME
-//   @Query(value = "SELECT p FROM produto p WHERE LOWER (p.nome) LIKE '%'|| LOWER(:nome) ||'%'")
-//     Page<Produto> buscarByNome(@Param("nome") String nome, Pageable pageable);
+    Produto findByIdProduto(long idProduto);
 
-    @Query(value = "SELECT * FROM produto p where p.nome  LIKE ('%',:nome, '%')",nativeQuery = true)
-    Page<Produto> findByNomeIgnoreCase(String nome, Pageable pageable);
-
-//    @Query(value = "SELECT * FROM produto p WHERE " +
-//            "p.nome LIKE LOWER(CONCAT('%',:buscar, '%'))" +
-//            "Or p.marca LIKE  LOWER(CONCAT('%', :buscar, '%'))",nativeQuery = true)
-//
     @Query(value = "SELECT * FROM produto p WHERE p.nome  ILIKE LOWER(CONCAT('%', :buscar, '%'))",nativeQuery = true)
     List<Produto> searchByNomeIgnoreCase(String buscar);
 

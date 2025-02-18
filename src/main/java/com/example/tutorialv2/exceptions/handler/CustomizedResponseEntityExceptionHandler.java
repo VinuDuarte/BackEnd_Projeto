@@ -33,8 +33,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
 
 
     @ExceptionHandler(NaoEncontradoException.class)
-    public final ResponseEntity<ExceptionResponse> handlerBadRequestExceptions
-            (Exception ex, WebRequest request ){
+    public final ResponseEntity<ExceptionResponse> handlerBadRequestExceptions (Exception ex, WebRequest request ){
         ExceptionResponse exceptionResponse = new ExceptionResponse(
                 new Date(),
                 ex.getMessage(),

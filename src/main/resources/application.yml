@@ -1,4 +1,6 @@
 
+file:
+  upload-dir: /Code/uploadDir
 security:
   jwt:
     token:
@@ -7,8 +9,8 @@ security:
 
 spring:
   datasource:
-    password: 123456
-    url: jdbc:postgresql://localhost:5432/testdb
+    password: 1234
+    url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
   flyway:
     baselineOnMigrate: true
@@ -23,6 +25,12 @@ spring:
         jdbc:
           lob:
             non_contextual_creation: true
+  servlet:
+    multipart:
+      enabled: true
+      file-size-threshold: 2KB
+      max-file-size: 25MB
+      max-request-size: 25MB
 
 springdoc:
   paths-to-match: /api/**

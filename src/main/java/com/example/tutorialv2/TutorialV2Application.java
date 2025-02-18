@@ -15,20 +15,6 @@ public class TutorialV2Application {
 
 
         SpringApplication.run(TutorialV2Application.class, args);
-
-
-//        Map<String,PasswordEncoder> encoders = new HashMap<>();
-//        Pbkdf2PasswordEncoder pbkdf2Encoder =
-//                new Pbkdf2PasswordEncoder("", 8, 18500, Pbkdf2PasswordEncoder.SecretKeyFactoryAlgorithm.PBKDF2WithHmacSHA256);
-//        encoders.put("pbkdf2", pbkdf2Encoder);
-//
-//        DelegatingPasswordEncoder passwordEncoder = new DelegatingPasswordEncoder("pbkdf2",encoders);
-//        passwordEncoder.setDefaultPasswordEncoderForMatches(pbkdf2Encoder);
-//
-//         String result = passwordEncoder.encode("admin234");
-//         System.out.println("My hash " + result);
-
-
     }
 
 }

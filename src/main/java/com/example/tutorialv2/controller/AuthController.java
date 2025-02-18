@@ -34,7 +34,6 @@ public class AuthController {
     @PostMapping(value = "/signin",
              produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
-
     @Operation(summary = "Realizar Login",description = "Auth da aplicação",
             tags = {"Token"},
             responses = {
@@ -45,7 +44,6 @@ public class AuthController {
                     @ApiResponse(description = "Internal Error", responseCode = "500", content = @Content),
             }
     )
-
     public ResponseEntity signin (@RequestBody AccountCredentialsVO data) throws Exception{
         if (checkIfParamIsNotNull(data))
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body("CLIENTE DE REQUISIÇÃO INVALIDO");
@@ -53,7 +51,6 @@ public class AuthController {
         var token = authService.signin(data);
         if (token == null) return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Invalid client request!");
         return token;
-
     }
 
     private boolean checkIfParamIsNotNull(String username, String refreshToken) {
