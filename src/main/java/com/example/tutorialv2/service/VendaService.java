@@ -26,10 +26,6 @@ public class VendaService {
     public Venda realizarVenda(VendaVo venda) throws Exception {
         var enity = DozerMapper.parseObject(venda, Venda.class);
 
-        //Validando a data
-        Date date = new Date();
-        enity.setDataVenda(date);
-
         //Validação de produtos
         var produtoRep = produtoRepository.findByIdProduto(enity.getIdProduto());
         var produto = DozerMapper.parseObject(produtoRep, Produto.class);
