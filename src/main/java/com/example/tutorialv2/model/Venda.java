@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Data
@@ -21,18 +21,28 @@ public class Venda {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "venda_seq")
     private long idVenda;
 
-    private Date dataVenda;
+    @Column(name = "datavenda")
+    private LocalDate dataVenda;
 
+    @Column(name = "id_usuario")
     private long idUsuario;
 
+    @Column(name = "exibir")
     private boolean exibir;
 
+    @Column(name = "id_produto")
     private long idProduto;
 
+    @Column(name = "quantidade_produto")
     private int quantidadeVendida;
 
+    @Column(name = "valor_venda")
     private BigDecimal valorVenda;
 
+    @PrePersist
+    private void onCreate() {
+        this.dataVenda = LocalDate.now();
+    }
 
 
 

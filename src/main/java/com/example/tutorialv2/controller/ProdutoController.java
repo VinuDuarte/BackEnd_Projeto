@@ -2,8 +2,6 @@ package com.example.tutorialv2.controller;
 
 
 import com.example.tutorialv2.data.vo.v1.ProdutoVO;
-import com.example.tutorialv2.data.vo.v1.TutorialVO;
-import com.example.tutorialv2.data.vo.v1.UsuarioVO;
 import com.example.tutorialv2.service.ProdutoService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
@@ -13,7 +11,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
